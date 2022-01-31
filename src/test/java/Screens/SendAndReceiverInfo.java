@@ -20,7 +20,7 @@ public class SendAndReceiverInfo extends BasePage {
     }
     public void SRInfo() throws InterruptedException {
         driver.get("https://buyme.co.il/money/1736681?price=250"); //delete ofter tests
-
+Thread.sleep(1000);
         ToOther(TO_OTHER_BUTTON_LOCATOR); //press 'To Other' Button
         EnterRecName(RECEIVERNAME_LOCATOR,RECEIVER);
         PickAnEvent(PICKEVENT_LOCATOR, EVENT_LOCATOR);
@@ -68,6 +68,8 @@ public class SendAndReceiverInfo extends BasePage {
 
         }
         private void EnterSenderName(String senderNameLocator, String senderName,String senderPhoneLocator, String senderPhone){
+            clear(By.cssSelector(senderNameLocator));
+
             sendKeysToElement(By.cssSelector(senderNameLocator),senderName); //fill Sender Name
             sendKeysToElement(By.cssSelector(senderPhoneLocator),senderPhone);// fill Sender Phone Number
             Assert.assertEquals(driver.findElement(By.cssSelector(SENDERNAME_LOCATOR)).getAttribute("value"),

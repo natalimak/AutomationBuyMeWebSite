@@ -3,8 +3,8 @@ package tools;
 public class Constants {
 
 // new USER
-    public static final String NAME = "Join12";
-    public static final String ADRESS="jos6sxhxsbsissssm1@ddd.com";
+    public static final String NAME = "Join121";
+    public static final String ADRESS="Test123456789@ddv.com";
     public static final String PASS="Pass1234";
 
 //New Search
@@ -46,7 +46,7 @@ public class Constants {
     //Pick Business screen
     public static final String BUSINESS_LOCATOR ="ul.bm-product-cards div:nth-child(2)";
     public static final String PRESENTPRICE_LOCATOR ="input[data-parsley-type=\"number\"]";
-    public static final String CHOICEBUTTON_LOCATOR = "button.ember-view[id=\"ember1568\"]";
+    public static final String CHOICEBUTTON_LOCATOR = "div[class='mx-12 money-btn'";
 
 
     //Sender and Receiver Information screen

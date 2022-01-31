@@ -1,6 +1,8 @@
 package execute;
 
+import Screens.LoginPage;
 import Screens.PickBusiness;
+import Screens.SearchPresent;
 import Screens.SendAndReceiverInfo;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -12,21 +14,21 @@ public class BuyMeWebSite {
     public static void runOnceBeforeClass() {
 
     }
-/*  @Test (priority = 1)
+    @Test (priority = 1)
     public static void RegistrationAndLogin() throws Exception {
        LoginPage loginPage = new LoginPage();
        loginPage.login();
-    }*/
-  /* @Test (priority = 2)
-    public static void HomeScreen() throws InterruptedException { //throws InterruptedException - delete
+    }
+  @Test (priority = 2)
+    public static void HomeScreen() throws Exception { //throws InterruptedException - delete
         SearchPresent SearchPresent = new SearchPresent();
         SearchPresent.SPresent();
-    }*/
-  /* @Test (priority = 3)
+    }
+   @Test (priority = 3)
     public static void PickBusiness() throws Exception {
         PickBusiness PickBusiness = new PickBusiness();
         PickBusiness.PBusiness();
-    }*/
+    }
     @Test (priority = 4)
     public static void SendReceivInformScreen() throws Exception {
          SendAndReceiverInfo SendAndReceiverInfo = new SendAndReceiverInfo();
