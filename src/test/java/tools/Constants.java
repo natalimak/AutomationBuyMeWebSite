@@ -4,16 +4,15 @@ public class Constants {
 
 // new USER
     public static final String NAME = "Join121";
-    public static final String ADRESS="Test123456789@ddv.com";
-    public static final String PASS="Pass1234";
+    public static final String PASS = "Pass1234";
 
-//New Search
+//New Search constants
     public static final String SEARCHPRICE_LOCATOR ="//*[contains(text(),'199')]";
     public static final String SEARCHREGION_LOCATOR ="//*[contains(text(),'מרכז')]";
     public static final String SEARCHCATEGORY_LOCATOR ="//*[contains(text(),'בריחה')]";
     public static final String SEARCHURL_LOCATOR ="https://buyme.co.il/search?budget=2&category=63&region=11";
 
-//Pick Business screen
+//Sender And Receiver Information screen-constants
     public static final String PRESENAMOUNT="250"; //present amount
     public static final String RECEIVER="IgorMyLove"; //Receiver name
     public static final String
@@ -24,7 +23,7 @@ public class Constants {
     public static final String SENDERNAME="Natali";
     public static final String SENDERPHONE="0541111222";
 
-//
+//---------------------Locators----------------------------//
 
     // web site main screen
     public static final String REGISTRATION_LOCATOR = "#ember985 > div > ul:first-of-type > li:nth-of-type(3) > a > span";
@@ -64,5 +63,4 @@ public class Constants {
     public static final String SENDERNAME_LOCATOR ="input[placeholder*='שולח'";
     public static final String SENDERPHONE_LOCATOR ="input[placeholder*='מספר'";
     public static final String SUMBITBUTTON_LOCATOR = "button[type=submit";
-
 }
