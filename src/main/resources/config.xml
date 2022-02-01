@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <chromeDriverPath>C:\Users\Administrator\Documents\Natali\לימודים\QA_Automation\Tools\chromedriver.exe</chromeDriverPath>
+    <browserType>Chrome</browserType>
+    <FFDriverPath>C:\Users\Administrator\Documents\Natali\לימודים\QA_Automation\Tools\geckodriver.exe</FFDriverPath>
+    <timeOut>10</timeOut>
+    <URL>https://buyme.co.il</URL>
+    <UserName>Join13</UserName>
+    <emailAdress>join13@ddd.com</emailAdress>
+</config>
