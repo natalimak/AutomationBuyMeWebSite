@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"tools","l":"BasePage"},{"p":"tools","l":"DriverSingleton"}];updateSearchResults();

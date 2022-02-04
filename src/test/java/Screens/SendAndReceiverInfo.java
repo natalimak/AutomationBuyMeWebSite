@@ -2,6 +2,7 @@ package Screens;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import tools.BasePage;
@@ -24,6 +25,7 @@ public class SendAndReceiverInfo extends BasePage {
      */
     public SendAndReceiverInfo() throws Exception {
         driver = getDriver();
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         wait=new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
@@ -33,9 +35,6 @@ public class SendAndReceiverInfo extends BasePage {
      *@see InterruptedException
      */
     public void SRInfo() throws InterruptedException {
-
-        Thread.sleep(1000);
-      // wait.until(ExpectedConditions.elementToBeClickable(By.id(TO_OTHER_BUTTON_LOCATOR)));
 
         ToOther(TO_OTHER_BUTTON_LOCATOR); //press 'To Other' Button
         EnterRecName(RECEIVERNAME_LOCATOR,RECEIVER);
@@ -58,6 +57,7 @@ public class SendAndReceiverInfo extends BasePage {
      * @see tools.Constants
      */
         private void ToOther(String locator){
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(locator)));
             clickElement(By.className(locator));
 }
 

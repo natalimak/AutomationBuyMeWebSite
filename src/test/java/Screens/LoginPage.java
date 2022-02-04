@@ -22,6 +22,8 @@ public class LoginPage extends BasePage {
 
     /**
      * This constructor initialises the web driver for the LoginPage class instance
+     * @exception Exception On input error.
+     * @see Exception
      */
     public LoginPage() throws Exception {
         driver = getDriver();
@@ -34,49 +36,52 @@ public class LoginPage extends BasePage {
     public void login() throws Exception {
         String email=generateRandomEmail(10);
         openWebSite();
-        pressRegistration();
-        newReg();
+        pressRegistration(REGISTRATION_LOCATOR);
+        newReg(NEWREG_LOCATOR);
         enterCredentials(email);
         assertCredentials(email);
-        pressLogin();
+        pressLogin(REGBUTTON_LOCATOR);
     }
     /**
      * This method will open web browser
      * @exception Exception On input error.
      * @see Exception
      */
-    private void openWebSite() throws Exception {
+    public void openWebSite() throws Exception {
         driver=getDriver();
         driver.get(BasePage.getData("URL"));
+        driver.manage().window().maximize();
     }
     /**
-     * This method will call to other method for click on registration/login button
+     * This method will call other method for click on registration/login button
+     * @param locator -registration button locator
      * @see #clickElement(By)
      */
-    private void pressRegistration() {
-        clickElement(By.cssSelector(REGISTRATION_LOCATOR));
+    public void pressRegistration(String locator) {
+        clickElement(By.cssSelector(locator));
     }
 
     /**
      * This method will call to other method for click on registration link
+     * @param locator - login button locator
      * @see #clickElement(By)
      */
-    private void newReg() {
-        clickElement(By.cssSelector(NEWREG_LOCATOR));
+    private void newReg(String locator) {
+        clickElement(By.cssSelector(locator));
     }
 
     /**
-     * This method will call to other method for click on registration link
+     * This method will call other method for click on registration link
      *          All parameters of locators and text in fields getting from #tools.Constants
      * @param email generated random email for creating new user.
      * @see #sendKeysToElement(By, String)
      * @see tools.Constants
      */
     private void enterCredentials(String email){
-        sendKeysToElement(By.id(USERNAME_LOCATOR), NAME); //insert username
-        sendKeysToElement(By.id(EMAIL_LOCATOR), email); //insert email
-        sendKeysToElement(By.id(PASSWORD_LOCATOR), PASS); //insert password
-        sendKeysToElement(By.id(PASSAGAIN_LOCATOR), PASS); //insert password again
+        sendKeysToElement(By.cssSelector(USERNAME_LOCATOR), NAME); //insert username
+        sendKeysToElement(By.cssSelector(EMAIL_LOCATOR), email); //insert email
+        sendKeysToElement(By.cssSelector(PASSWORD_LOCATOR), PASS); //insert password
+        sendKeysToElement(By.cssSelector(PASSAGAIN_LOCATOR), PASS); //insert password again
     }
 
     /**
@@ -86,22 +91,23 @@ public class LoginPage extends BasePage {
      * @see tools.Constants
      */
     private void assertCredentials(String email){
-        Assert.assertEquals(driver.findElement(By.id(USERNAME_LOCATOR)).getAttribute("value"),
+        Assert.assertEquals(driver.findElement(By.cssSelector(USERNAME_LOCATOR)).getAttribute("value"),
                 NAME); //assert USERNAME value
-        Assert.assertEquals(driver.findElement(By.id(EMAIL_LOCATOR)).getAttribute("value"),
+        Assert.assertEquals(driver.findElement(By.cssSelector(EMAIL_LOCATOR)).getAttribute("value"),
                 email); //assert EMAIL value
-        Assert.assertEquals(driver.findElement(By.id(PASSWORD_LOCATOR)).getAttribute("value"),
+        Assert.assertEquals(driver.findElement(By.cssSelector(PASSWORD_LOCATOR)).getAttribute("value"),
                 PASS); //assert PASSWORD value
-        Assert.assertEquals(driver.findElement(By.id(PASSAGAIN_LOCATOR)).getAttribute("value"),
+        Assert.assertEquals(driver.findElement(By.cssSelector(PASSAGAIN_LOCATOR)).getAttribute("value"),
                 PASS); //assert PASSWORD AGAIN FIELD value
     }
     /**
      * This method will call to other method for click on
      *              login button in end of registration process
+     * @param locator -login button locator
      * @see #clickElement(By)
      */
-    private void pressLogin(){
-        clickElement(By.cssSelector(REGBUTTON_LOCATOR));
+    public void pressLogin(String locator){
+        clickElement(By.cssSelector(locator));
     }
 
 

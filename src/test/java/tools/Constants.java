@@ -29,11 +29,14 @@ public class Constants {
     public static final String REGISTRATION_LOCATOR = "#ember985 > div > ul:first-of-type > li:nth-of-type(3) > a > span";
     public static final String NEWREG_LOCATOR = "#ember944 > div > div:first-of-type > div > div > div:nth-of-type(3) > div:first-of-type > span";
     //New User Registration screen
-    public static final String USERNAME_LOCATOR ="ember1697";
-    public static final String EMAIL_LOCATOR ="ember1704";
-    public static final String PASSWORD_LOCATOR ="valPass";
-    public static final String PASSAGAIN_LOCATOR ="ember1718";
-    public static final String REGBUTTON_LOCATOR = "span[class='label'";
+    public static final String USERNAME_LOCATOR ="input[placeholder*='שם פרטי'";
+    public static final String EMAIL_LOCATOR ="input[placeholder='מייל'";
+    public static final String PASSWORD_LOCATOR ="input[placeholder='סיסמה'";
+    public static final String PASSAGAIN_LOCATOR ="input[placeholder='אימות סיסמה'";
+    public static final String REGBUTTON_LOCATOR = "button[gtm*='הרשמה ל-BUYME'";
+    public static final String LOGIN_LOCATOR= "button[gtm*='כניסה ל']";
+    public static final String NOMAIL_LOCATOR="#parsley-id-12 > li";
+    public static final String NOPASSWORD_LOCATOR="#parsley-id-14 > li";
     //Home Screen
     public static final String MYACCOUNT_LOCATOR = "ember1761";
     public static final String PICKPRICE_LOCATOR = "form.form label:nth-child(1)";
@@ -46,7 +49,6 @@ public class Constants {
     public static final String BUSINESS_LOCATOR ="ul.bm-product-cards div:nth-child(2)";
     public static final String PRESENTPRICE_LOCATOR ="input[data-parsley-type=\"number\"]";
     public static final String CHOICEBUTTON_LOCATOR = "div[class='mx-12 money-btn'";
-
 
     //Sender and Receiver Information screen
     public static final String TO_OTHER_BUTTON_LOCATOR ="button-forSomeone";

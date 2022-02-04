@@ -33,23 +33,23 @@ public class BasePage {
      * This method will click on link\button by locator
      * @param locator -->  locator of the link\button
      */
-    public void clickElement(By locator) {
+    public static void clickElement(By locator) {
         getWebElement(locator).click();
     }
     /**
      * This method will write to field
-     * @param locator -->  locator of the field
-     * @param text --> text in the field
+     * @param locator -  locator of the field
+     * @param text - text in the field
      */
     public void sendKeysToElement(By locator, String text) {
         getWebElement(locator).sendKeys(text);
     }
     /**
      * This method will find locator
-     * @param locator -->  locator
+     * @param locator -  locator
      * @return method will return an element found by provided locator
      */
-    private WebElement getWebElement(By locator) {
+    private static WebElement getWebElement(By locator) {
         try {
             return driver.findElement(locator);
         }catch (NoSuchElementException e){
@@ -68,9 +68,9 @@ public class BasePage {
      * @see InterruptedException
      */
     public void dropDownElement(String locator, String choice) throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(500);
         clickElement(By.cssSelector(locator));
-        Thread.sleep(1000);
+        Thread.sleep(500);
         clickElement(By.xpath(choice));
     }
 
