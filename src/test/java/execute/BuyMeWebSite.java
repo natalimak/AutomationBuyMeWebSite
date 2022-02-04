@@ -1,9 +1,9 @@
 package execute;
 
-import Screens.LoginPage;
-import Screens.PickBusiness;
-import Screens.SearchPresent;
-import Screens.SendAndReceiverInfo;
+import screens.LoginPage;
+import screens.PickBusiness;
+import screens.SearchPresent;
+import screens.SendAndReceiverInfo;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;

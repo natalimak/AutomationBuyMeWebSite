@@ -1,6 +1,6 @@
 package execute;
 
-import Screens.LoginPage;
+import screens.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
