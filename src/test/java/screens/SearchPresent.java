@@ -46,7 +46,7 @@ public class SearchPresent extends BasePage {
      * @see tools.Constants
      */
     private void checkMainScreen(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(MYACCOUNT_LOCATOR)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(MYACCOUNT_LOCATOR)));
     }
 
 

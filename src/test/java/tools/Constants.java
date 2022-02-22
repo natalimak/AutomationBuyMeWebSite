@@ -26,8 +26,8 @@ public class Constants {
 //---------------------Locators----------------------------//
 
     // web site main screen
-    public static final String REGISTRATION_LOCATOR = "#ember985 > div > ul:first-of-type > li:nth-of-type(3) > a > span";
-    public static final String NEWREG_LOCATOR = "#ember944 > div > div:first-of-type > div > div > div:nth-of-type(3) > div:first-of-type > span";
+    public static final String REGISTRATION_LOCATOR = ".ember-view.top-nav-bar.home > div > ul:first-of-type > li:nth-of-type(3) > a > span";
+    public static final String NEWREG_LOCATOR = ".ember-view > div > div:first-of-type > div > div > div:nth-of-type(3) > div:first-of-type > span";
     //New User Registration screen
     public static final String USERNAME_LOCATOR ="input[placeholder*='שם פרטי'";
     public static final String EMAIL_LOCATOR ="input[placeholder='מייל'";
@@ -38,12 +38,12 @@ public class Constants {
     public static final String NOMAIL_LOCATOR="#parsley-id-12 > li";
     public static final String NOPASSWORD_LOCATOR="#parsley-id-14 > li";
     //Home Screen
-    public static final String MYACCOUNT_LOCATOR = "ember1761";
+    public static final String MYACCOUNT_LOCATOR = ".ember-view.dropdown.solid > a > span";
     public static final String PICKPRICE_LOCATOR = "form.form label:nth-child(1)";
     public static final String PICKREGION_LOCATOR = "form.form label:nth-child(2)";
     public static final String PICKCATEGORY_LOCATOR = "form.form label:nth-child(3)";
 
-    public static final String SEARCH_LOCATOR = "#ember1180";
+    public static final String SEARCH_LOCATOR = ".ember-view.bm-btn.no-reverse.main.md.ember-view";
 
     //Pick Business screen
     public static final String BUSINESS_LOCATOR ="ul.bm-product-cards div:nth-child(2)";

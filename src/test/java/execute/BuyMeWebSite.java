@@ -16,8 +16,7 @@ import static tools.BasePage.quit;
 
 /**
  * The BuyMeWebSite program an application that
- * run sanity test website (www.buyme.co.il).
- *
+ * run sanity test website (www.buyme.co.il)
  * @author  Natali Makvits
  * @version 1.0
  * @since   01-Feb-2022
@@ -65,6 +64,7 @@ public class BuyMeWebSite {
      * @exception Exception On input error.
      * @see Exception
      */
+
     @Test (priority = 2)
     public static void HomeScreen() throws Exception { //throws InterruptedException - delete
         test.log(Status.INFO,"Home Screen Test - Started");

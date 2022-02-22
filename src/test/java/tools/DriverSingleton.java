@@ -22,6 +22,11 @@ public class DriverSingleton {
      * @see Exception
      */
     public static WebDriver getDriverInstance() throws Exception {
+        createBrowser();
+        return driver;
+    }
+
+    private static void createBrowser() throws Exception {
         if(driver == null){
             String type = BasePage.getData("browserType");
             if(type.equals("Chrome")){
@@ -36,7 +41,6 @@ public class DriverSingleton {
                 driver = new FirefoxDriver();
             }
         }
-        return driver;
     }
 
 }

@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import tools.BasePage;
 import tools.DriverSingleton;
+import static tools.Constants.*;
 
 /**
  * The ExtraTest class include 2 tests.
@@ -18,8 +19,6 @@ import tools.DriverSingleton;
  * @version 1.0
  * @since   01-Feb-2022
  */
-import static tools.Constants.*;
-
 public class ExtraTest {
     private static WebDriver driver;
 
