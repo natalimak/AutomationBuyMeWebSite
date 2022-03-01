@@ -6,8 +6,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import tools.BasePage;
+
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.Duration;
 import static tools.Constants.*;
+
 /**
  * The SendAndReceiverInfo fill all fields for present order
  * @author  Natali Makvits
@@ -34,7 +38,7 @@ public class SendAndReceiverInfo extends BasePage {
      *@exception InterruptedException On input error.
      *@see InterruptedException
      */
-    public void SRInfo() throws InterruptedException {
+    public void SRInfo() throws InterruptedException, SQLException, IOException {
 
         ToOther(TO_OTHER_BUTTON_LOCATOR); //press 'To Other' Button
         EnterRecName(RECEIVERNAME_LOCATOR,RECEIVER);
@@ -47,7 +51,7 @@ public class SendAndReceiverInfo extends BasePage {
         PickPhone(SMS_LOCATOR,RECPHONE_LOCATOR,RECPHONENUMBER);
         EnterSenderName(SENDERNAME_LOCATOR ,SENDERNAME, SENDERPHONE_LOCATOR,SENDERPHONE);
         Payment(SUMBITBUTTON_LOCATOR);
-
+        addHistory();
     }
 
     /**

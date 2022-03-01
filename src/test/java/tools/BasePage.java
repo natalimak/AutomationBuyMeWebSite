@@ -9,14 +9,23 @@ import org.apache.commons.lang3.RandomStringUtils;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 
 import static execute.BuyMeWebSite.test;
+import static tools.DriverSingleton.DATABASE_NAME;
+import static tools.DriverSingleton.con;
+
 /**
  * The BasePage class include all sub methods that use BuyMeWebSite
  * @author  Natali Makvits
- * @version 1.0
- * @since   01-Feb-2022
+ * @version 1.01
+ * @since   01-March-2022
  */
 public class BasePage {
     private static WebDriver driver;
@@ -24,11 +33,15 @@ public class BasePage {
     /**
      * This method will call for a driver instance from singleton
      * @return method will return a driver from singleton (or new or exist)
+     * @exception Exception On input error.
+     * @see Exception
      */
     public WebDriver getDriver() throws Exception {
         driver = DriverSingleton.getDriverInstance();
         return driver;
     }
+    //-----------------locators-------------------
+
     /**
      * This method will click on link\button by locator
      * @param locator -->  locator of the link\button
@@ -36,6 +49,7 @@ public class BasePage {
     public static void clickElement(By locator) {
         getWebElement(locator).click();
     }
+
     /**
      * This method will write to field
      * @param locator -  locator of the field
@@ -44,6 +58,15 @@ public class BasePage {
     public void sendKeysToElement(By locator, String text) {
         getWebElement(locator).sendKeys(text);
     }
+
+    /**
+     * This method will clear the field
+     * @param locator --> locator of field for clearing
+     */
+    public void clear(By locator) {
+        getWebElement(locator).clear();
+    }
+
     /**
      * This method will find locator
      * @param locator -  locator
@@ -57,7 +80,6 @@ public class BasePage {
                     MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot("pic")).build());
         }
         return driver.findElement(locator);
-
     }
 
     /**
@@ -73,6 +95,26 @@ public class BasePage {
         Thread.sleep(500);
         clickElement(By.xpath(choice));
     }
+
+    /**
+     * This method will make ScreenShot
+     * @param ImagesPath --> path for ScreenShot image save
+     * @return full ImagesPath with ScreenShot file name
+     */
+    public static String takeScreenShot(String ImagesPath) {
+        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+        File screenShotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        File destinationFile = new File(ImagesPath + ".png");
+        try {
+            FileUtils.copyFile(screenShotFile, destinationFile);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return ImagesPath + ".png";
+    }
+
+
+    //---------------------External -----------
 
     /**
      * This method will open and read XML file
@@ -92,12 +134,13 @@ public class BasePage {
     }
 
     /**
-     * This method will clear the field
-     * @param locator --> locator of field for clearing
+     * This method will write to Report.txt file time
+     * @param time -->  Timestamp
      */
-
-    public void clear(By locator) {
-        getWebElement(locator).clear();
+    private static void writeReportToFile(Timestamp time) throws IOException {
+        FileWriter writer = new FileWriter("Report.txt",true);
+        writer.write(time + "\n");
+        writer.close();
     }
 
     /**
@@ -113,26 +156,56 @@ public class BasePage {
         email = temp.substring(0, temp.length() - 1) + "@testbuyme.com";
         return email;
     }
+
+    //------------------DB-----------------------
+    /**
+     * This method will add new row in DB with run info (date and time) or to text file if no DB connection
+     * @exception SQLException On input error.
+     * @see SQLException
+     */
+    protected static void addHistory()
+            throws SQLException, IOException {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        if (con!=null){
+            String statementToExecute = "INSERT INTO " + DATABASE_NAME +
+                    ".history (`test_data`) " +
+                    "VALUES ('" + timestamp + "');";
+            con.createStatement().execute(statementToExecute);
+        }
+        else {
+            writeReportToFile(timestamp);
+        }
+    }
+
     /**
      * This method will make ScreenShot
-     * @param ImagesPath --> path for ScreenShot image save
+     * @param con - connection to DB
+     * @param config_name URL or Browser
      * @return full ImagesPath with ScreenShot file name
      */
-    public static String takeScreenShot(String ImagesPath) {
-        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
-        File screenShotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        File destinationFile = new File(ImagesPath + ".png");
-        try {
-            FileUtils.copyFile(screenShotFile, destinationFile);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+    public static String getTableContent(Connection con,String config_name) throws SQLException {
+        String statementToExecute = "SELECT * FROM " + DATABASE_NAME + ".config where config_name= '"
+                +config_name+"';";
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(statementToExecute);
+        String name = "";
+        while(rs.next()){
+            name = rs.getString("config_data");
+            rs.close();
+            return name;
         }
-        return ImagesPath + ".png";
+        rs.close();
+        return name;
     }
-    /**
-     * This method will close internet explore (chrome or FF) season
-     */
-    public static void quit(){
+
+        /**
+         * This method will close internet explore (chrome or FF) season and DB connection
+         * @exception SQLException On input error.
+         * @see SQLException
+         */
+    public static void quit() throws SQLException {
         driver.quit();
+        if (con!=null)
+            con.close();
     }
 }

@@ -12,6 +12,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static tools.BasePage.quit;
 
 /**
@@ -45,7 +47,7 @@ public class BuyMeWebSite {
     /**
      * This RegistrationAndLogin test dispatch Login\new registration process.
      * New rows will be added to test report
-     * @see @loginPage
+     * @see screens.LoginPage#login
      * @exception Exception On input error.
      * @see Exception
      */
@@ -60,7 +62,7 @@ public class BuyMeWebSite {
     /**
      * This HomeScreen test dispatch Search for present process.
      * New rows will be added to test report
-     * @see @SearchPresent
+     * @see screens.SearchPresent#SPresent
      * @exception Exception On input error.
      * @see Exception
      */
@@ -76,7 +78,7 @@ public class BuyMeWebSite {
     /**
      * This PickBusiness test dispatch Pick Business process.
      * New rows will be added to test report
-     * @see @PickBusiness
+     * @see screens.PickBusiness#PBusiness
      * @exception Exception On input error.
      * @see Exception
      */
@@ -91,7 +93,7 @@ public class BuyMeWebSite {
     /**
      * This SendReceivInformScreen test dispatch "Fill details in Send Receive form Screen" process.
      * New rows will be added to test report
-     * @see @SendAndReceiverInfo
+     * @see screens.SendAndReceiverInfo#SRInfo
      * @exception Exception On input error.
      * @see Exception
      */
@@ -108,11 +110,10 @@ public class BuyMeWebSite {
      * @see ExtentSparkReporter
      */
     @AfterClass
-    public static void afterClass(){
+    public static void afterClass() throws SQLException {
         test.log(Status.INFO,"@AfterClass - Started");
         quit(); //kill driver
         extent.flush(); //create report
         test.log(Status.PASS,"@AfterClass");
-
     }
 }

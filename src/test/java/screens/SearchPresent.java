@@ -41,6 +41,7 @@ public class SearchPresent extends BasePage {
        pickCategory(PICKCATEGORY_LOCATOR, SEARCHCATEGORY_LOCATOR);
        pressSearch();
     }
+
     /**
      * This method will wait for screen after right login and receive main screen with login account
      * @see tools.Constants
@@ -63,8 +64,6 @@ public class SearchPresent extends BasePage {
         dropDownElement(priceLocator,price); //insert price in search area
     }
 
-
-
     /**
      * This method will select region from dropdown
      * @param regionLocator - main region dropdown locator
@@ -74,11 +73,10 @@ public class SearchPresent extends BasePage {
      * @exception InterruptedException On input error.
      * @see InterruptedException
      */
-
-
-    private void pickRegion(String regionLocator,String region) throws InterruptedException {
+        private void pickRegion(String regionLocator,String region) throws InterruptedException {
         dropDownElement(regionLocator,region);
     }
+
     /**
      * This method will select category from dropdown
      * @param categoryLocator - main category dropdown locator
@@ -89,7 +87,6 @@ public class SearchPresent extends BasePage {
         private void pickCategory(String categoryLocator,String category) throws InterruptedException {
         dropDownElement(categoryLocator,category);
     }
-
 
     /**
      * This method will call to other method for click on Search Button

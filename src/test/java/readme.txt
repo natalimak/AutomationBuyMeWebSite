@@ -30,5 +30,8 @@ A little intro about the use sanity test for BUYME website.
 > run BuyMeWebSite Test
 > run Extra Test
 
+>WebSite name and IE browser get from DB (if DB connected) or from XML file.
+>Write tests run results into history table in DB (if DB connected)
+>In case DB is unavailable-write results into results.txt
 ****************Enjoy***********************
 

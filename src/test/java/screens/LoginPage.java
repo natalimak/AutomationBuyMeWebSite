@@ -4,7 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import tools.BasePage;
+
+import java.sql.Connection;
+
 import static tools.Constants.*;
+import static tools.DriverSingleton.con;
 
 /**
  * The LoginPage class is login process to BuyMe website,
@@ -30,6 +34,12 @@ public class LoginPage extends BasePage {
    }
     /**
      * This method will call for Registration and login process
+     * @see #openWebSite()
+     * @see #pressRegistration(String)
+     * @see #newReg(String)
+     * @see #enterCredentials(String)
+     * @see #assertCredentials(String)
+     * @see #pressLogin(String)
      * @exception Exception On input error.
      * @see Exception
      */
@@ -43,15 +53,22 @@ public class LoginPage extends BasePage {
         pressLogin(REGBUTTON_LOCATOR);
     }
     /**
-     * This method will open web browser
+     * This method will open website by URL from DB (if connection exist) or from XML file
+     * @see #getData(String).
+     * @see #getTableContent(Connection, String)
      * @exception Exception On input error.
      * @see Exception
      */
     public void openWebSite() throws Exception {
         driver=getDriver();
-        driver.get(BasePage.getData("URL"));
+        if (con==null){
+            driver.get(BasePage.getData("URL")); //From XML
+        }
+        else {
+            driver.get(BasePage.getTableContent(con, "URL"));//from DB
+        }
         driver.manage().window().maximize();
-    }
+          }
     /**
      * This method will call other method for click on registration/login button
      * @param locator -registration button locator
